@@ -1,0 +1,15 @@
+yarn add v1.22.19
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+[4/4] Building fresh packages...
+success Saved lockfile.
+success Saved 3 new dependencies.
+info Direct dependencies
+├─ 3.0.0@3.0.0
+└─ react-native-screens@3.22.0
+info All dependencies
+├─ 3.0.0@3.0.0
+├─ react-freeze@1.0.3
+└─ react-native-screens@3.22.0
+Done in 23.90s.
