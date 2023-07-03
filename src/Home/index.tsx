@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Image} from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Image, SafeAreaView } from 'react-native';
 import axios from 'axios';
 import Header from '../Header';
-import { useNavigation } from '@react-navigation/native';
+import Button from '../Buton';
 
 const Home = () => {
   const [events, setEvents] = useState([]);
   
-  const navigation = useNavigation();
-  
-  const handleOnPress = () => {
-    navigation.navigate('Form');
-  }
   
   useEffect(() => {
     const fetchData = async () => {
@@ -30,16 +25,21 @@ const Home = () => {
 
   return (
     <>
+
       <Header />
-      <button style={styles.button}><Text style={styles.buttonText} onPress={handleOnPress}>Cadastrar</Text></button>
-      <View >
+      <Button />
+      <SafeAreaView>
+      <ScrollView >
+      <View style={styles.view} >
         {events.length > 0 ? (
           events.map(event => (
             <View style={styles.containerItem} key={event.message.nomeEvento}>
-              <View style={styles.containerTextHeader}>Nome:<Text>{event.message.nomeEvento}</Text></View>
+              <Text>Nome:{event.message.nomeEvento}</Text>
               <Text style={styles.containerText}>Website: {event.message.webSite}</Text>
               <Text style={styles.containerText}>Data: {event.message.data}</Text>
-              <Text style={styles.containerText}>Número máximo de candidatos: {event.message.numeroMaxCandidato}</Text>
+              <Text style={styles.containerText}>
+              Número máximo de candidatos: {event.message.numeroMaxCandidato}
+              </Text>
               <View >
                 <Text style={styles.containerText}>Endereço:
                   Rua: {JSON.stringify(event.message.endereco.logradouro)},
@@ -58,45 +58,18 @@ const Home = () => {
           <Text>Loading...</Text>
         )}
       </View>
+      </ScrollView>
+    </SafeAreaView>
     </>
   );
 };
 
 const styles = StyleSheet.create({
-
-  containerImage: {
-    width: 100,
-    height: 100,
-    marginTop: '10%',
-    marginLeft: '28%',
-    marginRight: '10%',
-    marginBottom: '10%',
-    padding: 15,
-    backgroundColor: '#DA5C5C',
-    shadowOpacity: 0.25,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowRadius: 20,
-    borderRadius: 10,
-    elevation: 5,
-    alignItems: 'center'
+    view: {
+    marginBottom: 250,
   },
-
-  containerTextHeader: {
-    textTransform: 'uppercase',
-    marginTop: '10%',
-    marginLeft: '10%',
-    marginRight: '10%',
-    marginBottom: '2%',
-    padding: 15,
-    backgroundColor: '#FFF',
-    shadowOpacity: 0.25,
-    shadowColor: '#000',
-    shadowRadius: 0
-  },
-
   containerItem: {
-    marginTop: '10%',
+    marginTop: '5%',
     marginLeft: '10%',
     marginRight: '10%',
     marginBottom: '2%',
@@ -104,7 +77,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
     shadowOpacity: 0.25,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
+    shadowOffset: { width: 0, height: 2 },
     shadowRadius: 20,
     borderRadius: 10,
     elevation: 5,
@@ -126,33 +99,17 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '400',
   },
-
-  container: {
-    paddingRight: '5%',
-    paddingLeft: '5%',
-    backgroundColor: '#F5F5F5'
-  },
-  button: {
-    backgroundColor: '#DA5C5C',
-    flexDirection: 'row',
-    borderRadius: 20,
-    marginTop: 50,
-    marginLeft: 50,
-    marginRight: 50,
+  containerImage: {
+    width: 90,
+    height: 90,
+    marginTop: '1%',
+    marginLeft: '35%',
+    elevation: 5,
     alignItems: 'center',
-    justifyContent: 'center'
+    backgroundColor: '#ff7702',
+    borderRadius: 10,
   },
-  buttonText: {
-    paddingTop: 15,
-    paddingBottom: 15,
-    paddingLeft: 50,
-    paddingRight: 50,
-    fontWeight: 'bold',
-    fontSize: 18,
-    color: '#FFF',
-    letterSpacing: -0.24,
-    fontFamily: 'OpenSans_700Bold'
-  }
+
 });
 
 export default Home;

@@ -1,21 +1,27 @@
-import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 function Header() {
+const navigation = useNavigation();
+
+  const handleOnPress = () => {
+    navigation.navigate('Home')
+  }
 
   return (
+    <>
       <View style={styles.container}>
-        <Text style={styles.text}>CEBRASPE EVENTS SEARCH</Text>
+        <Text style={styles.text} onPress={handleOnPress}>CEBRASPE EVENTS SEARCH</Text>
       </View>
+      </>
   );
-}
+};
 
 const styles = StyleSheet.create({
     container: {
-      backgroundColor: '#DA5C5C',
+      backgroundColor: '#ff7702',
       height: 90,
-      width: 360,
-      paddingTop: 25,
+      paddingTop: 40,
       padding: 0,
       flexDirection: 'row',
       justifyContent: 'center'

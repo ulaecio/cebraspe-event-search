@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from "./Home";
 import Form from "./Form";
+import Buton from "./Buton";
 
 const Stack = createStackNavigator();
 
@@ -18,6 +19,7 @@ function Routes() {
         }}
       >
         <Stack.Screen name="Home" component={Home}></Stack.Screen>
+        <Stack.Screen name="Buton" component={Buton}></Stack.Screen>
         <Stack.Screen name="Form" component={Form}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>

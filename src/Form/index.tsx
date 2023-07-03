@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { useNavigation } from '@react-navigation/native';
-import { View, Text, TextInput, Button, Alert, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, Alert, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
 import Header from '../Header';
 
 const Form = () => {
@@ -93,7 +93,9 @@ const Form = () => {
   return (
     <>
     <Header />
-    <View>
+          <SafeAreaView>
+      <ScrollView >
+    <View style={styles.view}>
     <Text>{apiResponse}</Text>
       <Text style={styles.header}>Nome do Evento:</Text>
         <TextInput style={styles.input}
@@ -187,24 +189,33 @@ const Form = () => {
         placeholder="Digite a URL da imagem"
         onChangeText={value => handleInputChange('imageUrl', value)}
         />
-      
       <Button title="Enviar" onPress={handleSubmit} />
     </View>
+      </ScrollView >
+          </SafeAreaView>
     </>
   );
 };
 
 const styles = StyleSheet.create({
   input: {
-    height: 40,
-    margin: 12,
+    height: 30,
+    marginTop: 0,
+    marginRight: 15,
+    marginLeft: 15,
+    marginBottom: 12,
     borderWidth: 1,
-    padding: 10,
+    borderColor: '#AAAA',
+    padding: 2,
   },
   header: {
-    height: 5,
-    margin: 12,
-    padding: 5,
+    height: 25,
+    margin: 15,
+    padding: 2,
+    backgroundColor: '#AAAA',
+  },
+  view: {
+    marginBottom: 250,
   },
 });
 
